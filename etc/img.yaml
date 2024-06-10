@@ -1,0 +1,12 @@
+Name: img
+Host: 0.0.0.0
+Port: 9999
+Timeout: 0 
+
+ZijieAI:
+  - AK: ""
+    SK: ""
+
+BaiduAI:
+  - AK: ""
+    SK: ""

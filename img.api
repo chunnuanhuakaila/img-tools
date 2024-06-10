@@ -1,0 +1,38 @@
+syntax = "v1"
+
+info (
+	title:   "图片工具大全"
+	version: "0.0.1"
+)
+
+type CommonRsp {
+	Code int    `json:"code"`
+	Msg  string `json:"msg,default=ok"`
+}
+
+type ImgReq {
+	Token      string `header:"token"`
+	BinaryData string `json:"binaryData,optional,omitempty"`
+	URL        string `json:"url,optional,omitempty"`
+	Action     string `json:"action"`
+	ExtraInfo  string `json:"extraInfo,optional,omitempty"`
+	TimeStamp  int64  `json:"timestamp"`
+}
+
+type ImgRsp {
+	CommonRsp
+	BinaryData string `json:"binaryData"`
+	URL        string `json:"url"`
+}
+
+@server (
+	prefix: /img
+	group : img
+)
+
+service img {
+	@doc "图片编辑"
+	@handler edit
+	post /edit (ImgReq) returns (ImgRsp)
+	
+}
